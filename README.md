@@ -1,6 +1,24 @@
 # 🧰 Isolate NVIDIA GPU for VFIO Passthrough (Arch Linux)
 
 This guide helps you identify your NVIDIA GPU's PCI IDs, enable IOMMU, configure VFIO, and confirm the GPU is detached from the host OS.
+Here’s the updated version of your **Markdown tutorial**, with a new line added at the end to inform users about the Python toggle script:
+
+---
+
+### 🐍 Optional: Automate Binding/Unbinding with Python Script
+
+Once you’ve successfully followed this guide, you can use a Python script to **automatically bind or unbind your NVIDIA GPU** from the host system with a simple command-line toggle.
+
+➡️ [View the script here](https://github.com/Maxikozie/NVIDIsolate-VFIOPassthrough/blob/main/gpu-vfio-toggle.py) 
+
+Make it executable and run with `sudo`:
+
+```bash
+chmod +x gpu-vfio-toggle.py
+sudo ./gpu-vfio-toggle.py
+```
+
+This saves you from manually editing config files and regenerating initramfs every time.
 
 ---
 
