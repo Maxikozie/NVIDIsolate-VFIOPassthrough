@@ -1,11 +1,10 @@
-# 🧰 Isolate NVIDIA GPU for VFIO Passthrough (Arch Linux)
+# Isolate NVIDIA GPU for VFIO Passthrough (Arch Linux)
 
 This guide helps you identify your NVIDIA GPU's PCI IDs, enable IOMMU, configure VFIO, and confirm the GPU is detached from the host OS.
-Here’s the updated version of your **Markdown tutorial**, with a new line added at the end to inform users about the Python toggle script:
 
 ---
 
-### 🐍 Optional: Automate Binding/Unbinding with Python Script
+### Optional: Automate Binding/Unbinding with Python Script
 
 Once you’ve successfully followed this guide, you can use a Python script to **automatically bind or unbind your NVIDIA GPU** from the host system with a simple command-line toggle.
 
@@ -22,7 +21,39 @@ This saves you from manually editing config files and regenerating initramfs eve
 
 ---
 
-## 🔍 Step 1: Identify PCI IDs
+## ⚠️ Prerequisites: Enable Virtualization (AMD-V / VT-x)
+
+Before starting, ensure your CPU supports virtualization and that it's **enabled in your BIOS**.
+
+You must have:
+
+* **AMD-V** (for AMD CPUs), or
+* **VT-x** (for Intel CPUs)
+
+### Check if it's enabled:
+
+Run:
+
+```bash
+lscpu | grep "Virtualization"
+```
+
+**Expected output:**
+
+```
+Virtualization:   AMD-V   # or "VT-x" for Intel
+```
+
+If you see nothing or it's blank:
+
+* **Reboot your machine**
+* Enter BIOS/UEFI (usually by pressing `F2`, `Del`, or `Esc`)
+* Enable **SVM Mode** (for AMD) or **Intel VT-x**
+
+---
+
+
+##  Step 1: Identify PCI IDs
 
 Run the following command to list NVIDIA devices with their PCI IDs:
 
@@ -47,7 +78,7 @@ Copy and save these values into a text editor.
 
 ---
 
-## ⚙️ Step 2: Enable IOMMU
+##  Step 2: Enable IOMMU
 
 ### Edit GRUB config:
 
@@ -89,7 +120,7 @@ sudo reboot
 
 ---
 
-## 🧩 Step 3: Isolate GPU from Host
+##  Step 3: Isolate GPU from Host
 
 ### Create VFIO config file:
 
