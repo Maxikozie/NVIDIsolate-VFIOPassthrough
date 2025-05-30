@@ -21,7 +21,19 @@ This saves you from manually editing config files and regenerating initramfs eve
 
 ---
 
-## ⚠️ Prerequisites: Enable Virtualization (AMD-V / VT-x)
+##  Prerequisites:
+
+
+###  Dual GPU Requirement
+
+Your computer **must have two GPUs**:
+→ a **dedicated GPU** (e.g. NVIDIA 4070)
+→ and an **integrated GPU (iGPU)** (like Intel or AMD iGPU)
+
+> ❗ Without both, GPU passthrough to a VM will not work — the host needs a separate GPU to stay usable.
+
+
+###  Virtualization
 
 Before starting, ensure your CPU supports virtualization and that it's **enabled in your BIOS**.
 
