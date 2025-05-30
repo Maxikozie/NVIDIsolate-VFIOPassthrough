@@ -107,8 +107,9 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 **Replace it with:**
 
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on iommu=pt vfio-pci.ids=10de:2783,10de:22bc"
+GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on iommu=pt vfio-pci.ids=XXXX:XXXX,XXXX:XXXX"
 ```
+XXXX:XXXX,XXXX:XXXX = Your PCI IDs
 
 Remove `quiet splash` if present.
 
@@ -151,11 +152,11 @@ softdep nvidia pre: vfio-pci
 ---
 
 ### Regenerate initramfs:
-
+Arch
 ```bash
 sudo mkinitcpio -p linux
 ```
-
+> For other non-Arch LinuxOS users, use `sudo update-initramfs -c -k $(uname -r)`
 ---
 
 ### Reboot again:
