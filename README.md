@@ -167,7 +167,7 @@ sudo reboot
 
 ---
 
-## ✅ Step 4: Confirm VFIO Driver is in Use
+## Step 4: Confirm VFIO Driver is in Use
 
 Run the following to check kernel drivers in use:
 
@@ -182,6 +182,4 @@ Kernel driver in use: vfio-pci
 Kernel driver in use: vfio-pci
 ```
 
----
 
-## 🎉 Done!
